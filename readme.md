@@ -6,10 +6,7 @@ O projeto foi desenvolvido como um laboratório pessoal para explorar **técnica
 
 ## 📸 Preview
 
-<video width="100%" autoplay loop muted playsinline>
-  <source src="./assets/preview.mp4" type="video/mp4">
-  Seu navegador não suporta a tag de vídeo.
-</video>
+https://github.com/user-attachments/assets/f283bd89-e800-4f4f-b00b-1a6c2cfd23c9
 
 ## 🚀 Demonstração
 
