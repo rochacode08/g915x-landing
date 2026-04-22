@@ -1,0 +1,104 @@
+/* =========================================================================
+   RGB MESH BLOB SECTION
+   ========================================================================= */
+
+.rgb-blob-section {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 8rem;
+  border-radius: 40px 40px 0 0;
+  background: #000;
+
+  @media (max-width: 768px) {
+    margin-top: 4rem;
+    min-height: 60vh;
+    border-radius: 24px 24px 0 0;
+  }
+}
+
+.rgb-blob-bg,
+.rgb-blob-bg-2,
+.rgb-blob-bg-3 {
+  position: absolute;
+  filter: blur(80px);
+  opacity: 0.6;
+  border-radius: 50%;
+  animation: blob-float 15s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rgb-blob-bg {
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, #ff0055 0%, transparent 70%);
+  top: -10%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.rgb-blob-bg-2 {
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, #00B8FC 0%, transparent 70%);
+  bottom: -20%;
+  right: -10%;
+  animation-delay: -5s;
+}
+
+.rgb-blob-bg-3 {
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, #7000ff 0%, transparent 70%);
+  top: 20%;
+  left: 30%;
+  animation-delay: -10s;
+}
+
+@keyframes blob-float {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(10%, 10%) scale(1.1); }
+  100% { transform: translate(-10%, 5%) scale(0.9); }
+}
+
+.rgb-content {
+  position: relative;
+  z-index: 10;
+  max-width: 600px;
+  text-align: center;
+  padding: 4rem;
+  border-radius: 2rem;
+  background: rgba(9, 9, 11, 0.6);
+  margin: 0 2rem;
+
+  @media (max-width: 768px) {
+    padding: 2.5rem 1.5rem;
+    border-radius: 1.5rem;
+    margin: 0 1rem;
+  }
+
+  p {
+    color: var(--text-secondary);
+    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  }
+}
+
+.rgb-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -0.04em;
+  background: linear-gradient(90deg, #ff0055, #00B8FC, #7000ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rgb-shift 5s linear infinite;
+  background-size: 200% 100%;
+}
+
+@keyframes rgb-shift {
+  0%   { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
