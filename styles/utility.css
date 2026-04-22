@@ -1,0 +1,36 @@
+/* =========================================================================
+   UTILITIES & SCROLL REVEALS
+   ========================================================================= */
+
+.font-mono { font-family: var(--font-mono); }
+.text-accent { color: var(--accent); }
+
+.liquid-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-drop-shadow), var(--glass-inner-shadow);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+[data-scroll-reveal] {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition:
+    opacity 1.2s var(--ease-spring),
+    transform 1.2s var(--ease-spring);
+
+  &[data-scroll-reveal="up"]    { transform: translateY(60px); }
+  &[data-scroll-reveal="down"]  { transform: translateY(-60px); }
+  &[data-scroll-reveal="left"]  { transform: translateX(-60px); }
+  &[data-scroll-reveal="right"] { transform: translateX(60px); }
+  &[data-scroll-reveal="scale"] { transform: scale(0.9); }
+
+  &.is-revealed {
+    opacity: 1;
+    transform: translate(0) scale(1);
+  }
+}

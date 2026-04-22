@@ -1,0 +1,100 @@
+/* =========================================================================
+   GLOBAL STYLES (Root, Reset, Scrollbar)
+   ========================================================================= */
+
+:root {
+  /* Colors - Off Black Theme */
+  --bg-base: #09090b;
+  --bg-surface: #18181b;
+  --accent: #00B8FC;
+  --accent-glow: rgba(0, 184, 252, 0.4);
+
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+
+  /* Typography */
+  --font-sans: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+  /* Spacing */
+  --container-max: 1400px;
+  --gap-sm: 0.5rem;
+  --gap-md: 1.5rem;
+  --gap-lg: 3rem;
+  --gap-xl: 6rem;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* Liquid Glass */
+  --glass-bg: rgba(255, 255, 255, 0.02);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-inner-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --glass-drop-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+
+  /* Easing */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+
+  @media (max-width: 768px) {
+    width: 0;
+  }
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+  border-radius: var(--radius-full);
+
+  &:hover {
+    background: var(--accent);
+  }
+}
+
+/* Fix lateral scroll on <= 768px */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+}
