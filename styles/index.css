@@ -1,0 +1,19 @@
+/* =========================================================================
+   G915X LIGHTSPEED - MAIN INDEX
+   Importação modular dos estilos
+   ========================================================================= */
+
+@import "global.css";
+@import "utility.css";
+@import "typography.css";
+@import "nav.css";
+@import "buttons.css";
+@import "hero.css";
+@import "bento.css";
+@import "marquee.css";
+@import "zigzag.css";
+@import "specs.css";
+@import "rgb-blobs.css";
+@import "footer.css";
+@import "intro-animation.css";
+@import "accessibility.css";
