@@ -1,0 +1,39 @@
+/* =========================================================================
+   KINETIC MARQUEE
+   ========================================================================= */
+
+.kinetic-marquee {
+  width: 100%;
+  padding: 6rem 0;
+  overflow: hidden;
+  background: var(--bg-base);
+  display: flex;
+  position: relative;
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: fit-content;
+    animation: marquee 20s linear infinite;
+    white-space: nowrap;
+  }
+
+  .marquee-text {
+    font-size: clamp(3rem, 8vw, 8rem);
+    font-weight: 800;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
