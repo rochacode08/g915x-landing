@@ -1,0 +1,141 @@
+/* =========================================================================
+   PAGE INTRO ANIMATION
+   Split-panel reveal: dois painéis se abrem do centro + wordmark flash
+   ========================================================================= */
+
+/* Container dos dois painéis */
+.site-intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  display: flex;
+  overflow: hidden;
+
+  /* Seam: linha vertical luminosa no centro que aparece enquanto os painéis se separam */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      transparent    0%,
+      var(--accent)  25%,
+      var(--accent)  75%,
+      transparent   100%
+    );
+    box-shadow: 0 0 24px 6px var(--accent-glow);
+    animation: seam-pulse 1.6s ease 0.55s both;
+    pointer-events: none;
+  }
+}
+
+@keyframes seam-pulse {
+  0%   { opacity: 0;   transform: translateX(-50%) scaleY(0.2); }
+  20%  { opacity: 1;   transform: translateX(-50%) scaleY(1);   }
+  75%  { opacity: 0.7; transform: translateX(-50%) scaleY(1);   }
+  100% { opacity: 0;   transform: translateX(-50%) scaleY(1);   }
+}
+
+/* Os dois meios-painéis que cobrem a tela antes do reveal */
+.intro-panel {
+  flex: 1;
+  background: var(--bg-base);
+  will-change: transform;
+}
+
+.intro-panel--left {
+  transform-origin: left center;
+  animation: panel-split-left 1.15s cubic-bezier(0.76, 0, 0.24, 1) 0.7s both;
+}
+
+.intro-panel--right {
+  transform-origin: right center;
+  animation: panel-split-right 1.15s cubic-bezier(0.76, 0, 0.24, 1) 0.7s both;
+}
+
+@keyframes panel-split-left {
+  0%   { transform: translateX(0);     }
+  100% { transform: translateX(-101%); }
+}
+
+@keyframes panel-split-right {
+  0%   { transform: translateX(0);    }
+  100% { transform: translateX(101%); }
+}
+
+/* Wordmark que pisca no centro do overlay antes da abertura */
+.intro-wordmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono);
+  font-size: clamp(1.1rem, 3vw, 2rem);
+  font-weight: 500;
+  letter-spacing: 0.5em;
+  color: var(--accent);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+  animation: wordmark-flash 0.85s ease 0.05s both;
+}
+
+@keyframes wordmark-flash {
+  0%   { opacity: 0; letter-spacing: 0.7em; filter: blur(8px);  }
+  35%  { opacity: 1; letter-spacing: 0.5em; filter: blur(0);    }
+  70%  { opacity: 1; letter-spacing: 0.5em; filter: blur(0);    }
+  100% { opacity: 0; letter-spacing: 0.4em; filter: blur(4px);  }
+}
+
+/* Nav desliza de cima para baixo após o split */
+.main-nav {
+  animation: nav-drop-in 0.75s var(--ease-spring) 1.55s both;
+}
+
+@keyframes nav-drop-in {
+  from { opacity: 0; transform: translateY(-16px); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0);     filter: blur(0);   }
+}
+
+/* Elementos hero: blur-rise em stagger */
+.intro-item {
+  opacity: 0;
+  animation: intro-rise 1s var(--ease-spring) var(--delay, 1s) both;
+}
+
+@keyframes intro-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Container do vídeo/asset: blur-slide da direita */
+.intro-item-right {
+  opacity: 0;
+  animation: intro-from-right 1.15s var(--ease-spring) var(--delay, 1s) both;
+}
+
+@keyframes intro-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(36px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}

@@ -1,0 +1,64 @@
+/* =========================================================================
+   BUTTONS (MAGNETIC)
+   ========================================================================= */
+
+.magnetic {
+  display: inline-flex;
+  cursor: pointer;
+  position: relative;
+
+  &:active {
+    transform: scale(0.96) !important;
+  }
+}
+
+.btn-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg-base);
+  font-weight: 700;
+  padding: 0.8rem 2rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 0 0 var(--accent-glow);
+  transition:
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+
+  &:hover {
+    background: #0be3fa;
+    box-shadow: 0 10px 30px -10px var(--accent-glow);
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.7rem 1.25rem;
+    font-size: 0.875rem;
+  }
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  font-weight: 600;
+  padding: 0.8rem 2rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--glass-border);
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.7rem 1.25rem;
+    font-size: 0.875rem;
+  }
+}
